@@ -1,0 +1,79 @@
+<html>
+<meta charset="UTF-8">
+<head>
+	<title></title>
+<script src = "common_func.js"></script>
+<script>
+	function checkMemRegForm(){
+		
+		var mem_name = document.memberRegForm.mem_name.value;
+		var uid= document.memberRegForm.uid.value;
+		var pwd = document.memberRegForm.pwd.value;
+		
+		
+		
+		//var regExp = new RegExp( /^[가-힣]{2,20}$/ );
+		if(checkmemname(mem_name)){
+			alert("회원명에는 한글 2-20자까지 입력해야 합니다.");
+			document.memberRegForm.mem_name.value="";
+			return;
+		}
+		
+		if(checkid(uid)){
+			alert("아이디는 영소문자로 시작하고 영소문자 또는 숫자 또는 _ 로 5-10자로 구성돼야 합니다.");
+			document.memberRegForm.uid.value="";
+			return;
+		}
+
+		
+		if(checkpwd(pwd)){
+			alert("암호는 영소문자 또는 숫자로 5-8자로 구성돼야 합니다.");
+			document.memberRegForm.pwd.value="";
+			return;
+		}
+		
+		alert("회원가입 성공")
+
+		location.replace("loginForm.html")
+
+	}
+</script>
+
+</head>
+	
+<body>
+<center>
+
+	<form name="memberRegForm">
+
+		<table border = 1 cellpadding = 5 style = "border-collapse:collapse">
+			<caption>회원가입</caption>
+			<tr>
+				<th bgcolor = "lightgray">회원명</th>
+				<td><input type="text"name="mem_name"
+				</td>
+			</tr>
+			<tr>
+				<th bgcolor = "lightgray">아이디</th>
+				<td><input type="text"name="uid"
+				</td>
+			</tr>
+						<tr>
+				<th bgcolor = "lightgray">비밀번호</th>
+				<td><input type="password"name="pwd"
+				</td>
+			</tr>
+		</table>
+
+
+
+		<br>
+		<input type = "button" value = "저장" onClick="checkMemRegForm()">
+		<input type = "button" value = "초기화">
+		<br><br>
+		<input type = "button" value = "로그인 화면으로" onClick="location.replace('loginForm.html')">
+	</form>
+</center>
+</body>
+
+</html>
